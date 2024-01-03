@@ -3,6 +3,7 @@ import Search from "./components/search/search";
 import CurrentWeather from "./components/current_weather/current_weather";
 import { Weather_API_URL, Weather_API_KEY } from "./api";
 import { useState } from "react";
+import Forecast from "./components/forecast/forecast"
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
@@ -28,15 +29,15 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
-  console.log(currentWeather);
-  console.log(currentForecast);
+  // console.log(currentWeather);
+  // console.log(currentForecast);
   return (
     <div className="container">
       <Search onSearchChange={handleOnSearchChange} />
-      {CurrentWeather && <CurrentWeather data={currentWeather} />}
+      {currentWeather && <CurrentWeather data={currentWeather} />}
+      {currentForecast && <Forecast data={currentForecast} />}
     </div>
   );
 }
 
 export default App;
-// @babel/plugin-proposal-private-property-in-object
